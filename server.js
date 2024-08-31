@@ -32,7 +32,7 @@ mongoose
   .catch((err) => console.error("Database connection error:", err));
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://rendys-car-shop.vercel.app",
   credentials: true,
   methods: ["GET", "POST", "PATCH"],
 };
