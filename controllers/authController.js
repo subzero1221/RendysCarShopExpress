@@ -62,7 +62,7 @@ exports.signup = catchAsync(async (req, res, next) => {
         httpOnly: true,
         secure: true,
         maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: "none",
+        sameSite: "lax",
         path: "/",
       });
 
@@ -86,7 +86,7 @@ exports.login = catchAsync(async (req, res, next) => {
         httpOnly: true,
         secure: true,
         maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: "none",
+        sameSite: "lax",
         path: "/",
       });
 
