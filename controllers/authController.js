@@ -82,13 +82,13 @@ exports.login = catchAsync(async (req, res, next) => {
     req.login(user, (err) => {
       if (err) return next(err);
 
-      res.cookie("userId", req.user._id.toString(), {
-        httpOnly: true,
-        secure: true,
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: "None",
-        path: "/",
-      });
+  res.cookie("userId", req.user._id.toString(), {
+  httpOnly: true,
+  secure: true,
+  expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day from now
+  sameSite: "None",
+  path: "/",
+});
 
       res.status(200).json({
         status: "success",
