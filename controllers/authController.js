@@ -83,7 +83,7 @@ exports.login = catchAsync(async (req, res, next) => {
       if (err) return next(err);
 
       res.cookie("userId", req.user._id.toString(), {
-        httpOnly: true,
+        httpOnly: false,
         secure: true,
         maxAge: 24 * 60 * 60 * 1000, // 1 day
         sameSite: "None",
