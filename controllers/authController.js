@@ -60,9 +60,9 @@ exports.signup = catchAsync(async (req, res, next) => {
 
       res.cookie("userId", String(req.user._id), {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: process.env.NODE_ENV === "production" ? "None" : "lax",
+        sameSite: "none",
         path: "/",
       });
 
@@ -84,9 +84,9 @@ exports.login = catchAsync(async (req, res, next) => {
 
       res.cookie("userId", req.user._id.toString(), {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: process.env.NODE_ENV === "production" ? "None" : "lax",
+        sameSite: "none",
         path: "/",
       });
 
