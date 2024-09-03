@@ -149,7 +149,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   }
   const resetToken = await user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
-  const resetURL = `http://localhost:3000/resetPassword/${resetToken}`;
+  const resetURL = `https://rendyscarshop-production.up.railway.app/resetPassword/${resetToken}`;
 
   const message = `Forgot your password? to change your password please go to: ${resetURL} `;
   try {
