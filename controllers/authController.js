@@ -64,6 +64,7 @@ exports.signup = catchAsync(async (req, res, next) => {
         maxAge: 24 * 60 * 60 * 1000, // 1 day
         sameSite: "None",
         path: "/",
+        domain: ".railway.app",
       });
 
       res.status(201).json({
@@ -88,6 +89,7 @@ exports.login = catchAsync(async (req, res, next) => {
   expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day from now
   sameSite: "None",
   path: "/",
+  domain: ".railway.app",
 });
 
       res.status(200).json({
