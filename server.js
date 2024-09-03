@@ -16,6 +16,7 @@ const userRouter = require("./routes/userRoutes");
 const carRouter = require("./routes/carRoutes");
 const reserveRouter = require("./routes/reserveRoutes");
 const vipRouter = require("./routes/vipRoutes");
+const { webhookCheckout } = require("./controllers/vipController");
 
 dotenv.config({ path: "./config.env" });
 const port = process.env.PORT || 4000;
@@ -38,6 +39,12 @@ const corsOptions = {
   credentials: true,
   methods: ["GET", "POST", "PATCH"],
 };
+
+app.post(
+  "/webhook-checkout",
+  express.raw({ type: "application/json" }),
+  webhookCheckout
+);
 
 app.use(cors(corsOptions));
 app.use(express.json({ limit: "30kb" }));
