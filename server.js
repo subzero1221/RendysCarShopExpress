@@ -21,6 +21,8 @@ dotenv.config({ path: "./config.env" });
 const port = process.env.PORT || 4000;
 const app = express();
 const DB = process.env.MONGODB_URL;
+app.set('trust proxy', 1);
+
 
 app.use(helmet());
 app.use(mongoSanitize());
