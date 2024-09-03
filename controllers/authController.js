@@ -108,8 +108,18 @@ exports.logout = (req, res, next) => {
     }
 
     req.session.destroy(() => {
-      res.clearCookie("connect.sid");
-      res.clearCookie("userId");
+      res.clearCookie("connect.sid", {
+        path: "/", 
+        domain: ".railway.app", 
+        secure: true,          
+        sameSite: "None",       
+      });
+      res.clearCookie("userId", {
+        path: "/", 
+        domain: ".railway.app", 
+        secure: true,           
+        sameSite: "None",       
+      });
       res.status(200).json({
         status: "success",
         message: "You are logged out",
