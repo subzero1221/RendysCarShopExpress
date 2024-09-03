@@ -41,3 +41,30 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     session,
   });
 });
+
+
+const createVipCheckout = async (session) => {
+  const car = session.client_reference_id;
+  const update = { vip: true };
+  await Car.findOneAndUpdate({ _id: car }, update);
+};
+
+exports.webhookCheckout = (req, res, next) => {
+  const signature = req.headers["stripe-signature"];
+
+  let event;
+  try {
+    event = stripe.webhooks.constructEvent(
+      req.body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET
+    );
+  } catch (err) {
+    return res.status(400).send(`Webhook error: ${err.message}`);
+  }
+
+  if (event.type === "checkout.session.completed")
+    createVipCheckout(event.data.object);
+
+  res.status(200).json({ received: true });
+};
