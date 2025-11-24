@@ -35,7 +35,7 @@ mongoose
   .catch((err) => console.error("Database connection error:", err));
 
 const corsOptions = {
-  origin: "https://rendyscarshop-production.up.railway.app",
+  origin: "https://rendyscarshop-production-2386.up.railway.app",
   credentials: true,
   methods: ["GET", "POST", "PATCH"],
 };
