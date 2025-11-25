@@ -53,14 +53,13 @@ app.use(cookieParser());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: false,
     resave: false,
+    saveUninitialized: false,
     cookie: {
-      httpOnly: true,
       secure: true,
-      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
       sameSite: "none",
-      path: "/",
+      maxAge: 24 * 60 * 60 * 1000,
     },
   })
 );
