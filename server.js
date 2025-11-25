@@ -55,9 +55,6 @@ app.use(
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
-    store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URL,
-    }),
     cookie: {
       httpOnly: true,
       secure: true,
