@@ -37,6 +37,7 @@ mongoose
 const corsOptions = {
   origin: "https://rendyscarshop-production-2386.up.railway.app",
   credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
   methods: ["GET", "POST", "PATCH"],
 };
 
