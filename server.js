@@ -62,7 +62,7 @@ app.use(
       httpOnly: true,
       sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
-      domain: "railway.app"
+      domain: '.up.railway.app',
     },
   })
 );
